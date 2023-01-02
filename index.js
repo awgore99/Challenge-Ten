@@ -4,6 +4,7 @@ const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const Manager = require("./lib/Manager");
 const Employee = require("./lib/Employee");
+const EngTemplate = require("./src/Engineer.html")
 
 const employeeArray = [];
 
@@ -69,6 +70,21 @@ function addEmployee(){
             newEmployee = new Manager(name, id, email, uniqueRoleDetails);
         }
         employeeArray.push(newEmployee);
+        addHTML(newEmployee);
+        inquirer.prompt([{
+            type: "input",
+            message: "Add another employee? Yes/No",
+            name: "empBool"
+        }])
+        if(empBool === "Yes"){
+            addEmployee();
+        } else {
+            const endData = `</div>
+            </div>
+            </body>
+            </html>`;
+            fs.appendFile("./dist/employeeList.html", endData);
+        }
     })
 }
 
@@ -87,6 +103,25 @@ function startHTML(){
         <div class="row">
     `;
     fs.writeFile("./dist/employeesList.html", data);
+}
+function addHTML(newEmployee){
+    const name = newEmployee.getName();
+    const id = newEmployee.getId();
+    const email = newEmployee.getEmail();
+    const role = newEmployee.getRole();
+    if(role === "Engineer"){
+        const GitHub = newEmployee.getGitHub();
+        let data = `./src/Engineer.html`
+    }
+    if(role === "Intern"){
+        const school = newEmployee.getSchool();
+        let data = `./src/Intern.html`
+    }
+    if(role === "Manager"){
+        const officeNum = newEmployee.getOfficeNumber();
+        let data = `./src/Manager.html`
+    }
+    fs.appendFile("./dist/employeesList.hmtl", data);
 }
 
 
