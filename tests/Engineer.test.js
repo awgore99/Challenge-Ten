@@ -1,4 +1,3 @@
-
 const Engineer = require("../lib/Engineer");
 
 test("Can create an engineer with a github username", () => {
