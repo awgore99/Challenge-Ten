@@ -3,8 +3,9 @@ const fs = require("fs");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const Manager = require("./lib/Manager");
-const Employee = require("./lib/Employee");
 const EngTemplate = require("./src/Engineer.html")
+const IntTemplate = require("./src/Intern.html")
+const ManTemplate = require("./src/Manager.html")
 
 const employeeArray = [];
 
@@ -109,17 +110,18 @@ function addHTML(newEmployee){
     const id = newEmployee.getId();
     const email = newEmployee.getEmail();
     const role = newEmployee.getRole();
+    let data = ``
     if(role === "Engineer"){
         const GitHub = newEmployee.getGitHub();
-        let data = `./src/Engineer.html`
+        data = EngTemplate;
     }
     if(role === "Intern"){
         const school = newEmployee.getSchool();
-        let data = `./src/Intern.html`
+        data = IntTemplate;
     }
     if(role === "Manager"){
         const officeNum = newEmployee.getOfficeNumber();
-        let data = `./src/Manager.html`
+        data = ManTemplate;
     }
     fs.appendFile("./dist/employeesList.hmtl", data);
 }

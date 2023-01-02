@@ -3,6 +3,10 @@
     "version": "1.0.0",
     "description": "",
     "main": "index.js",
+    "directories": {
+        "lib": "lib",
+        "test": "test"
+    },
     "scripts": {
       "start": "node index",
       "watch": "nodemon index",
@@ -11,7 +15,6 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
-      "chalk": "^2.4.1",
       "inquirer": "8.2.4"
     },
     "devDependencies": {
